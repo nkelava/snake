@@ -1,31 +1,41 @@
 # Snake
 
-For my OOP class project I chose to make an ASCII console game, so I went with one of the best old-school classic games, (dramatic pause) Snake :D For people who have never played Snake before, here is a link with a little more information about the game: https://en.wikipedia.org/wiki/Snake_(video_game_genre).
+The classic Snake game for the Windows console, written in C++ as an object-oriented programming class project.
 
-When the player starts the game, the main menu shows up and there are 3 options:
+## Requirements
 
-1. Press ESC to exit the game
-2. Press TAB to see the TOP 5 highscores
-3. Press ENTER to start the game
+- Windows
+- Visual Studio 2019 or newer with the **Desktop development with C++** workload
 
-Before pressing ENTER to start the game, the player has the option to enter any username they wish, although the username length is limited to 12 characters. If the player does not enter anything, their username is set to "Unknown" by default.
+## Build and run
 
-# Commands
+1. Open `Snake.sln` in Visual Studio.
+2. Press **Ctrl+F5** to build and run.
 
-To move the snake, the player can only use the arrow keys: left arrow key (<-) to go left, right arrow key (->) to go right, etc. It is not possible for the snake to go downward if it is moving upward and vice versa; the same applies to left and right movement. Lastly, the snake can go through the border and it will end up on the opposite side, so it is not game over if the snake touches it.
+The game loads its files from `data/` relative to the working directory. To run `Snake.exe` outside Visual Studio, start it from the `Snake` folder.
 
-# Files
+## How to play
 
-To draw the bigger text (SNAKE and GAME OVER on the main and end screens) on the board, the program uses 2 files (menu-coordinates.txt, end-coordinates.txt). They hold letter coordinates, so make sure they are in the Snake/data folder. Every letter is separated by an empty row, and every row is one line that makes up a letter. For example, (1 1 2 2) represents x1, y1, x2, y2 and the program draws a line from point 1 to point 2. Furthermore, highscores are saved in highscores.txt, which means that file should also be in the Snake/data folder.
+| Key | Action |
+| --- | --- |
+| ENTER | Start the game |
+| TAB | Show the top 5 highscores |
+| ESC | Exit the game, or go back to the menu from the highscores |
+| Arrow keys | Move the snake |
 
-# Project structure
+Type your name on the main menu before starting, otherwise you play as `Unknown`. Eat `o` to grow and earn 3 points. The snake wraps around the edges, and the game ends when it runs into itself. Your score is saved if it makes the top 5.
+
+## Project structure
 
 ```
-Snake.sln                 Visual Studio solution
+Snake.sln                     Visual Studio solution
 Snake/
-    Snake.vcxproj         Visual Studio project
-    src/                  source and header files
-    data/                 coordinates and highscores files used by the game
+├── Snake.vcxproj             Visual Studio project
+├── src/                      Source and header files
+└── data/
+    ├── menu-coordinates.txt  SNAKE title
+    ├── end-coordinates.txt   GAME OVER title
+    └── highscores.txt        Top 5 scores
 ```
 
-Open Snake.sln in Visual Studio and run the game from there; data files are loaded relative to the Snake project folder.
+Each line in a coordinates file (`x1 y1 x2 y2`) draws one line of a title letter, and letters are separated by empty lines.
