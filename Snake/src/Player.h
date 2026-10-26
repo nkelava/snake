@@ -14,7 +14,7 @@ public:
 
 	void setName(const string name) { userName = name; }
 	string getName() const { return userName; }
-	int getNameLenght() const { return userName.length(); }
+	int getNameLength() const { return userName.length(); }
 	char getNameLetterAt(const int i) const { return userName[i]; };
 	void addPoints(const int p) { points += p; }
 	int getPoints() const { return points; }

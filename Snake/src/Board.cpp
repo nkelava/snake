@@ -68,7 +68,7 @@ void Board::draw(int c1, int c1xy, int c2, char ch, const directions dir, const 
 	if (angl == verthor) {
 		while (c1 != c2) {
 			(dir == updown) ? draw_char(c1, c1xy, ch) : draw_char(c1xy, c1, ch);
-			(c1 > c2) ? --c1 : ++c1; // Incr/decr depeneding on other cooridinate(inconstant) position(lower/higher)
+			(c1 > c2) ? --c1 : ++c1; // Incr/decr depending on the other coordinate's (non-constant) position (lower/higher)
 		}
 		(dir == updown) ? draw_char(c1, c1xy, ch) : draw_char(c1xy, c1, ch);
 	}
@@ -106,8 +106,8 @@ void Board::draw_line(const int x1, const int y1, const int x2, const int y2, co
 bool Board::check_diagonal(int x1, int y1, int x2, int y2) const {
 	directions dir = (check_direction(x1, y1, x2, y2)) ? brtl : bltr; // Get direction so we know which way to go
 
-	while (x1 != x2) {  // Go from one point diagonally untill you reach other point
-		if (dir == brtl) {   // Go in direction br-tl or vice verse 
+	while (x1 != x2) {  // Go from one point diagonally until you reach the other point
+		if (dir == brtl) {   // Go in direction br-tl or vice versa
 			(x1 > x2) ? --y1 : ++y1;
 		}
 		else {
@@ -119,7 +119,7 @@ bool Board::check_diagonal(int x1, int y1, int x2, int y2) const {
 }
 
 bool Board::check_direction(const int x1, const int y1, const int x2, const int y2) const {
-	return ((x1 > x2 && y1 > y2) || (x1 < x2 && y1 < y2)); // Checks for br-tl, if it returns false we know it's bl-tr
+	return ((x1 > x2 && y1 > y2) || (x1 < x2 && y1 < y2)); // Checks for br-tl; if it returns false, we know it's bl-tr
 }
 
 Board::~Board() {

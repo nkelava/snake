@@ -52,7 +52,7 @@ string Game::MenuScreen() {
 			name.push_back(input);
 			usernameLen = name.length();
 
-			if (usernameLen <= USERNAMELEN) { // Limited username lenght because of window size
+			if (usernameLen <= USERNAMELEN) { // Username length is limited because of the window size
 				board.setSymbolAt(11, 16 + (usernameLen - 1), name[usernameLen - 1]);
 			}
 		}
@@ -122,14 +122,14 @@ void Game::updateHighScores() const {
 
 	ptrFile.clear();
 	ptrFile.seekg(0, ios::beg);
-	// Add current player to vector od players than sort them in descending order
+	// Add the current player to the vector of players, then sort them in descending order
 	if (players.empty() == true) {
 		ptrFile << player.getName() << " " << to_string(player.getPoints()) << '\n';
 	}
 	else {
 		players.push_back(player);
 		sort(players.begin(), players.end(), greater<Player>());
-		if (players.size() > 5) {  // We only need top 5 so when it reaches 6 delete last one
+		if (players.size() > 5) {  // We only need the top 5, so when it reaches 6, delete the last one
 			players.pop_back();
 		}
 
@@ -163,9 +163,9 @@ void Game::GameScreen() {
 
 		if (keyPressed()) {
 			key = _getch();
-			// Arrow keys have 2 ASCII values, 1. is 0 or 224 and it's same for all of them, 2. value differentiates them
+			// Arrow keys have 2 ASCII values: the 1st is 0 or 224 and it's the same for all of them, the 2nd value differentiates them
 			if (key == 0 || key == 224) {
-				key = _getch(); // Because of 1 value we now need to catch the second one 
+				key = _getch(); // Because of the 1st value, we now need to catch the 2nd one
 				if ((key == ::right && directionState != ::left) || (key == ::left && directionState != ::right)) {
 					directionState = key;
 				}
@@ -175,7 +175,7 @@ void Game::GameScreen() {
 			}
 			Game::ClearConsoleInputBuffer();
 		}
-		// If the place we want to move collide with the body, upgrade scores and exit the game
+		// If the place we want to move to collides with the body, update the highscores and exit the game
 		if (move(directionState) == true) {
 			updateHighScores();
 			EndScreen();
@@ -216,7 +216,7 @@ bool Game::move(int direction) {
 	else {
 		moveRight();
 	}
-	// With moveX function tail is set to next position so we set tail to be head and pop that last redundant point
+	// The moveX functions set the tail to the next position, so we make the tail the new head and pop the last redundant point
 	snake.insert(snake.begin(), snake.back());
 	snake.pop_back();
 
