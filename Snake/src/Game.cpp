@@ -13,7 +13,7 @@ void Game::ClearConsoleInputBuffer() {
 
 string Game::MenuScreen() {
 	board.setEmptyBoard();
-	board.setScreenText("data/menu_coordinates.txt", LOGOSYMB);
+	board.setScreenText("data/menu-coordinates.txt", LOGOSYMB);
 
 	string nameTxt = "Enter name: ", exitTxt = "Press ESC to exit...", highScoreTxt = "Press TAB for highscores...";
 	string name = "";
@@ -266,7 +266,7 @@ bool Game::gameOver(const Point p1, const Point p2) const {
 
 void Game::EndScreen() {
 	board.setEmptyBoard();
-	board.setScreenText("data/end_coordinates.txt", LOGOSYMB);
+	board.setScreenText("data/end-coordinates.txt", LOGOSYMB);
 
 	string playerMsg = "Player: " + player.getName(), pointsMsg = "Points: " + to_string(player.getPoints());
 	int playerMsgLen = playerMsg.length(), pointsMsgLen = pointsMsg.length();
