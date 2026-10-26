@@ -1,7 +1,7 @@
 #pragma once
-#include <conio.h>
-#include <windows.h>
+#include <functional>
 
+#include "Console.h"
 #include "Player.h"
 #include "Board.h"
 
@@ -11,7 +11,7 @@
 #define LOGOSYMB 'X'
 #define SNAKESYMB '*'
 #define FRUITSYMB 'o'
-#define CLRSCR system("cls")
+#define CLRSCR Console::clearScreen()
 
 enum movements { up = 72, left = 75, right = 77, down = 80 };
 

@@ -5,10 +5,7 @@ Game::Game() {
 }
 
 void Game::ClearConsoleInputBuffer() {
-	PINPUT_RECORD ClearingVar1 = new INPUT_RECORD[256];
-	DWORD ClearingVar2;
-	ReadConsoleInput(GetStdHandle(STD_INPUT_HANDLE), ClearingVar1, 256, &ClearingVar2);
-	delete[] ClearingVar1;
+	Console::flushInput();
 }
 
 string Game::MenuScreen() {
@@ -28,7 +25,7 @@ string Game::MenuScreen() {
 	while (true) {
 		CLRSCR;
 		board.displayBoard();
-		input = _getch();
+		input = Console::getKey();
 
 		if (input == 27) { // Esc
 			return "Esc";
@@ -98,7 +95,7 @@ void Game::HighScoreScreen() {
 	char input;
 
 	while (true) {
-		if ((input = _getch()) == 27) { break; }
+		if ((input = Console::getKey()) == 27) { break; }
 	}
 	Game::ClearConsoleInputBuffer();
 }
@@ -159,13 +156,13 @@ void Game::GameScreen() {
 		board.setSnakeOnBoard(snake);
 		CLRSCR;
 		board.displayBoard();
-		Sleep(SPEED);
+		Console::sleepFor(SPEED);
 
 		if (keyPressed()) {
-			key = _getch();
+			key = Console::getKey();
 			// Arrow keys have 2 ASCII values: the 1st is 0 or 224 and it's the same for all of them, the 2nd value differentiates them
 			if (key == 0 || key == 224) {
-				key = _getch(); // Because of the 1st value, we now need to catch the 2nd one
+				key = Console::getKey(); // Because of the 1st value, we now need to catch the 2nd one
 				if ((key == ::right && directionState != ::left) || (key == ::left && directionState != ::right)) {
 					directionState = key;
 				}
@@ -197,7 +194,7 @@ bool Game::checkFruit() {
 }
 
 bool Game::keyPressed() {
-	return _kbhit();
+	return Console::keyPressed();
 }
 
 bool Game::move(int direction) {

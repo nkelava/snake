@@ -1,18 +1,26 @@
 # Snake
 
-The classic Snake game for the Windows console, written in C++ as an object-oriented programming class project.
+The classic Snake game for the console on Windows, Linux and macOS, written in C++ as an object-oriented programming class project.
 
 ## Requirements
 
-- Windows
-- Visual Studio 2019 or newer with the **Desktop development with C++** workload
+- **Windows:** Visual Studio 2019 or newer with the **Desktop development with C++** workload
+- **Linux and macOS:** a C++11 compiler and CMake 3.13 or newer
 
 ## Build and run
 
-1. Open `Snake.sln` in Visual Studio.
-2. Press **Ctrl+F5** to build and run.
+**Windows:** open `Snake.sln` in Visual Studio and press **Ctrl+F5**.
 
-The game loads its files from `data/` relative to the working directory. To run `Snake.exe` outside Visual Studio, start it from the `Snake` folder.
+**Linux and macOS:** run these commands from the repository folder:
+
+```sh
+cmake -S . -B build
+cmake --build build
+cd Snake
+../build/Snake
+```
+
+The game loads its files from `data/` relative to the working directory, so start it from the `Snake` folder (Visual Studio does this automatically).
 
 ## How to play
 
@@ -29,6 +37,7 @@ Type your name on the main menu before starting, otherwise you play as `Unknown`
 
 ```
 Snake.sln                     Visual Studio solution
+CMakeLists.txt                CMake build for Linux and macOS
 Snake/
 ├── Snake.vcxproj             Visual Studio project
 ├── src/                      Source and header files

@@ -1,11 +1,13 @@
 #pragma once
 
 #include <algorithm>
+#include <cstdlib>
 #include <fstream>
 #include <ctime>
 #include <vector>
 #include <iterator>
 
+#include "Console.h"
 #include "Point.h"
 #include "Exceptions.h"
 
@@ -13,7 +15,7 @@
 #define WIDTH 33
 #define FRAMESYMB 'X'
 
-#define CLRSCR system("cls")
+#define CLRSCR Console::clearScreen()
 
 enum angles { verthor, diagonal }; // verthor - vertical/horizontal
 enum directions { updown, leftright, brtl, bltr }; // brtl(bottom-right top-left), bltr(bottom-left top-right)
