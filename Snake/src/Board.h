@@ -7,7 +7,7 @@
 #include <iterator>
 
 #include "Point.h"
-#include "Error.h"
+#include "Exceptions.h"
 
 #define HEIGHT 18
 #define WIDTH 33

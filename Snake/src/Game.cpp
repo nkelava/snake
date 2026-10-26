@@ -13,7 +13,7 @@ void Game::ClearConsoleInputBuffer() {
 
 string Game::MenuScreen() {
 	board.setEmptyBoard();
-	board.setScreenText("menuCoordinates.txt", LOGOSYMB);
+	board.setScreenText("data/menu_coordinates.txt", LOGOSYMB);
 
 	string nameTxt = "Enter name: ", exitTxt = "Press ESC to exit...", highScoreTxt = "Press TAB for highscores...";
 	string name = "";
@@ -64,7 +64,7 @@ void Game::HighScoreScreen() {
 
 	ifstream inFile;
 
-	inFile.open("highscores.txt");
+	inFile.open("data/highscores.txt");
 
 	if (!inFile) {
 		inFile.close();
@@ -104,7 +104,7 @@ void Game::HighScoreScreen() {
 }
 
 void Game::updateHighScores() const {
-	fstream ptrFile("highscores.txt");
+	fstream ptrFile("data/highscores.txt");
 
 	if (!ptrFile) {
 		ptrFile.close();
@@ -266,7 +266,7 @@ bool Game::gameOver(const Point p1, const Point p2) const {
 
 void Game::EndScreen() {
 	board.setEmptyBoard();
-	board.setScreenText("endCoordinates.txt", LOGOSYMB);
+	board.setScreenText("data/end_coordinates.txt", LOGOSYMB);
 
 	string playerMsg = "Player: " + player.getName(), pointsMsg = "Points: " + to_string(player.getPoints());
 	int playerMsgLen = playerMsg.length(), pointsMsgLen = pointsMsg.length();
